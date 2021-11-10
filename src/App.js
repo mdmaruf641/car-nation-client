@@ -11,6 +11,7 @@ import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login/Login";
 import SignUp from "./Pages/Login/SignUp/SignUp";
 import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
+import Checkout from "./Pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact></Contact>
+          </Route>
+          <Route path="/checkOut/:_id">
+            <Checkout></Checkout>
           </Route>
           <Route path="/dashboard">
             <Dashboard></Dashboard>

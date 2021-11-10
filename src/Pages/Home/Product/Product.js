@@ -1,9 +1,17 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { useHistory } from "react-router";
 import "./Product.css";
 
 const Product = (props) => {
-  const { name, description, img, price } = props.product;
+  const { name, description, img, price, _id } = props.product;
+
+  // handle service details button
+  const history = useHistory();
+  const handleDetailsBtn = () => {
+    history.push(`/checkOut/${_id}`);
+  };
+
   return (
     <div>
       <div className="col">
@@ -14,7 +22,9 @@ const Product = (props) => {
             <h5>Price: ${price}</h5>
             <p className="card-text">{description}</p>
             <Card.Footer>
-              <Button className="button">Book Now</Button>
+              <Button onClick={handleDetailsBtn} className="button">
+                Book Now
+              </Button>
             </Card.Footer>
           </div>
         </div>
