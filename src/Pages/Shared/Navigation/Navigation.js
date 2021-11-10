@@ -14,7 +14,7 @@ const Navigation = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="mx-auto">
               <Nav.Link
                 className="menu-items fs-5 text-white"
                 as={HashLink}
@@ -42,6 +42,22 @@ const Navigation = () => {
                 to="/dashboard"
               >
                 Dashboard
+              </Nav.Link>
+            </Nav>
+            <Nav className="me-auto">
+              <Nav.Link
+                className="menu-items fs-5 text-white"
+                as={HashLink}
+                to="/login"
+              >
+                Login
+              </Nav.Link>
+              <Nav.Link
+                className="menu-items fs-5 text-white"
+                as={HashLink}
+                to="/signUp"
+              >
+                Sign Up
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

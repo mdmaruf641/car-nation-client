@@ -4,10 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./Pages/Home/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
-import Navigation from "./Pages/Shared/Navigation/Navigation";
+
 import Explore from "./Pages/Explore/Explore";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Contact from "./Pages/Contact/Contact";
+import Login from "./Pages/Login/Login/Login";
+import SignUp from "./Pages/Login/SignUp/SignUp";
 
 function App() {
   return (
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard></Dashboard>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <Route path="/signUp">
+            <SignUp></SignUp>
           </Route>
           <Route path="*">
             <NotFound></NotFound>

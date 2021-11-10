@@ -1,4 +1,5 @@
 import React from "react";
+import AddProduct from "../../Dashboard/AddProduct/AddProduct";
 import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
