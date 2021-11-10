@@ -35,18 +35,17 @@
   border: 2px solid transparent;
 }
 
-/* 
+/* for responsive */
 @media only screen and (max-width: 688px) {
-  .main-menu {
-    background-color: #07a8ff;
-    text-align: center;
+  #banner h1 {
+    font-size: 30px;
+    margin: 10px 0;
   }
 }
 
 @media only screen and (min-width: 688px) and (max-width: 992px) {
-  .main-menu {
-    background-color: #07a8ff;
-    text-align: center;
+  #banner h1 {
+    font-size: 60px;
+    margin: 15px 0;
   }
 }
- */

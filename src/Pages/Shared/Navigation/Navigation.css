@@ -15,3 +15,16 @@
 .menu-items:hover {
   color: #ff5400 !important;
 }
+
+/* responsive */
+@media only screen and (max-width: 688px) {
+  .main-nav {
+    background: #43516c !important;
+  }
+}
+
+@media only screen and (min-width: 688px) and (max-width: 992px) {
+  .main-nav {
+    background: #1f2f50 !important;
+  }
+}

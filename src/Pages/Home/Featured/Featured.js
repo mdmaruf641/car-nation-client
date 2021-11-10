@@ -12,7 +12,7 @@ const Featured = () => {
     <div>
       <Container>
         <div className="section-heading my-5">
-          <p className="w-75 mx-auto">our service Cars</p>
+          <p className="w-75 mx-auto text-uppercase">our service Cars</p>
           <h2 className="fw-bold">Exclusive Car Featured</h2>
         </div>
 
