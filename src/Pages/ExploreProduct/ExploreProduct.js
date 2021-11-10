@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import "./Product.css";
+import "./exploreProduct.css";
 
-const Product = (props) => {
+const exploreProduct = (props) => {
   const { name, description, img, price } = props.product;
   return (
     <div>
@@ -23,4 +23,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default exploreProduct;

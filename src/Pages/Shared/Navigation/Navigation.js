@@ -44,7 +44,7 @@ const Navigation = () => {
                 Dashboard
               </Nav.Link>
             </Nav>
-            <Nav className="me-auto">
+            <Nav className="text-end">
               <Nav.Link
                 className="menu-items fs-5 text-white"
                 as={HashLink}

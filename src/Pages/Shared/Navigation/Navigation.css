@@ -5,6 +5,7 @@
   width: 100%;
 }
 .menu-items {
+  text-align: center;
   padding: 5px 8px;
   transition: 0.3s;
   -webkit-transition: 0.3s;
@@ -20,11 +21,13 @@
 @media only screen and (max-width: 688px) {
   .main-nav {
     background: #43516c !important;
+    z-index: 1;
   }
 }
 
 @media only screen and (min-width: 688px) and (max-width: 992px) {
   .main-nav {
     background: #1f2f50 !important;
+    z-index: 1;
   }
 }

@@ -1,0 +1,17 @@
+.button {
+  background-color: #ff5400;
+  border: 2px solid transparent;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 7px 15px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+.button:hover {
+  background-color: #282828 !important;
+  border: 2px solid transparent;
+}
+
+.card-title {
+  color: #ff5400;
+}

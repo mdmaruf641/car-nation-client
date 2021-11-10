@@ -10,6 +10,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login/Login";
 import SignUp from "./Pages/Login/SignUp/SignUp";
+import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard></Dashboard>
+          </Route>
+          <Route path="/addProduct">
+            <AddProduct></AddProduct>
           </Route>
           <Route path="/login">
             <Login></Login>

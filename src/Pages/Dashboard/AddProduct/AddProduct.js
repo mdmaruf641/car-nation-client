@@ -16,36 +16,36 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+    <div className="addProduct">
       <h2>Add Your Product</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          className="my-2 w-50"
+          className="my-2 rounded px-3 py-2 fs-5 w-50"
           placeholder="Product Name"
           {...register("name", { required: true, maxLength: 20 })}
         />
         <br />
         <input
-          className="my-2 w-50"
+          className="my-2 rounded px-3 py-2 fs-5 w-50"
           placeholder="Price"
           type="number"
           {...register("price")}
         />
         <br />
         <textarea
-          className="my-2 w-50"
+          className="my-2 rounded px-3 py-2 fs-5 w-50"
           placeholder="Description"
           {...register("description")}
         />
         <br />
         <input
-          className="my-2 w-50"
+          className="my-2 rounded px-3 py-2 fs-5 w-50"
           placeholder="Product image URL"
           {...register("img")}
         />
         <br />
 
-        <input type="submit" value="Add Product" />
+        <input className="addButton" type="submit" value="Add Product" />
       </form>
     </div>
   );
