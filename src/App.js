@@ -13,6 +13,7 @@ import SignUp from "./Pages/Login/SignUp/SignUp";
 import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
 import Checkout from "./Pages/Checkout/Checkout";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -32,9 +33,9 @@ function App() {
             <Route path="/contact">
               <Contact></Contact>
             </Route>
-            <Route path="/checkOut/:_id">
+            <PrivateRoute path="/checkOut/:_id">
               <Checkout></Checkout>
-            </Route>
+            </PrivateRoute>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route>

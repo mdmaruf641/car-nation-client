@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button, Container, Form, Spinner } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import Navigation from "../../Shared/Navigation/Navigation";
 import "./Login.css";
 import useAuth from "./../../../Hooks/useAuth";
@@ -8,6 +8,8 @@ import useAuth from "./../../../Hooks/useAuth";
 const Login = () => {
   const [loginData, setLoginData] = useState({});
   const { user, loginUser, loading, authError } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
 
   const handleOnChange = (e) => {
     const field = e.target.name;
@@ -20,7 +22,7 @@ const Login = () => {
   // handle login button
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    loginUser(loginData.email, loginData.password);
+    loginUser(loginData.email, loginData.password, location, history);
   };
   return (
     <div>
