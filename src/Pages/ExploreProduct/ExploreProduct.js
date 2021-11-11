@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import "./exploreProduct.css";
 
 const exploreProduct = (props) => {
-  const { name, description, img, price, _id } = props.product;
+  const { name, description, img, price /* _id */ } = props.product;
   // handle service details button
   /*   const history = useHistory();
   const handleDetailsBtn = () => {

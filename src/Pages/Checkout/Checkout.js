@@ -9,7 +9,7 @@ const Checkout = () => {
   const [checkout, setCheckout] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://peaceful-ocean-27772.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         const checkoutItems = data.find((checkout) => checkout._id === _id);

@@ -7,12 +7,14 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/products", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Your Product Successfully Added");
-        reset();
-      }
-    });
+    axios
+      .post("https://peaceful-ocean-27772.herokuapp.com/products", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Your Product Successfully Added");
+          reset();
+        }
+      });
   };
 
   return (
