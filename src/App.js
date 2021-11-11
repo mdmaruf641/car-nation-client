@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "./Pages/Home/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Explore from "./Pages/Explore/Explore";
-import Dashboard from "./Pages/Dashboard/Dashboard";
+
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login/Login";
 import SignUp from "./Pages/Login/SignUp/SignUp";
@@ -13,6 +13,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
 import Checkout from "./Pages/Checkout/Checkout";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -35,9 +36,9 @@ function App() {
             <PrivateRoute path="/checkOut/:_id">
               <Checkout></Checkout>
             </PrivateRoute>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
-            </Route>
+            </PrivateRoute>
             <Route path="/addProduct">
               <AddProduct></AddProduct>
             </Route>
