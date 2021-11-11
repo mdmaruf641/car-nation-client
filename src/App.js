@@ -12,44 +12,47 @@ import Login from "./Pages/Login/Login/Login";
 import SignUp from "./Pages/Login/SignUp/SignUp";
 import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
 import Checkout from "./Pages/Checkout/Checkout";
+import AuthProvider from "./Context/AuthProvider/AuthProvider";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/home">
-            <Home></Home>
-          </Route>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/explore">
-            <Explore></Explore>
-          </Route>
-          <Route path="/contact">
-            <Contact></Contact>
-          </Route>
-          <Route path="/checkOut/:_id">
-            <Checkout></Checkout>
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard></Dashboard>
-          </Route>
-          <Route path="/addProduct">
-            <AddProduct></AddProduct>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="/signUp">
-            <SignUp></SignUp>
-          </Route>
-          <Route path="*">
-            <NotFound></NotFound>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/home">
+              <Home></Home>
+            </Route>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/explore">
+              <Explore></Explore>
+            </Route>
+            <Route path="/contact">
+              <Contact></Contact>
+            </Route>
+            <Route path="/checkOut/:_id">
+              <Checkout></Checkout>
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard></Dashboard>
+            </Route>
+            <Route path="/addProduct">
+              <AddProduct></AddProduct>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/signUp">
+              <SignUp></SignUp>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

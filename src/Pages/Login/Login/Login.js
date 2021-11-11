@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Navigation from "../../Shared/Navigation/Navigation";
 import "./Login.css";
+import useAuth from "./../../../Hooks/useAuth";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
+  const { user, loginUser, loading, authError } = useAuth();
+
   const handleOnChange = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -17,6 +20,7 @@ const Login = () => {
   // handle login button
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    loginUser(loginData.email, loginData.password);
   };
   return (
     <div>
@@ -44,10 +48,22 @@ const Login = () => {
               placeholder="Your Password"
             />
             <br />
+
             <Button className="button" variant="primary" type="submit">
               Login
             </Button>
           </Form>
+          {loading && <Spinner animation="border" />}
+          {user?.email && (
+            <Alert className="mt-3" variant={"success"}>
+              Your Are Successfully Logged In!
+            </Alert>
+          )}
+          {authError && (
+            <Alert className="mt-3" variant={"danger"}>
+              {authError}
+            </Alert>
+          )}
           <NavLink className="my-3 d-block text-decoration-none" to="/signUp">
             New User? Please Sign Up
           </NavLink>
