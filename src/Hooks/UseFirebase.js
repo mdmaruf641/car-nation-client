@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
   signOut,
 } from "firebase/auth";
 
@@ -18,11 +19,22 @@ const useFirebase = () => {
   const auth = getAuth();
 
   // for registration user
-  const registerUser = (email, password) => {
+  const registerUser = (email, password, name, history) => {
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+
+        // send name to firebase after creation
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {})
+          .catch((error) => {});
+        // for redirect sign up page to home page
+        history.replace("/");
       })
       .catch((error) => {
         setAuthError(error.message);

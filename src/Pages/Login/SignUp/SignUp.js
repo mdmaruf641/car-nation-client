@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import Navigation from "../../Shared/Navigation/Navigation";
 import "./SignUp.css";
 import useAuth from "./../../../Hooks/useAuth";
+import { useHistory } from "react-router";
 
 const SignUp = () => {
   const [loginData, setLoginData] = useState({});
+  const history = useHistory();
   const { user, registerUser, loading, authError } = useAuth();
 
   const handleOnChange = (e) => {
@@ -25,7 +27,13 @@ const SignUp = () => {
       alert("Your Password Did Not Match");
       return;
     }
-    registerUser(loginData.email, loginData.password, loginData.name);
+    registerUser(
+      loginData.email,
+      loginData.password,
+      loginData.name,
+      loginData.name,
+      history
+    );
   };
   return (
     <div>
@@ -34,7 +42,6 @@ const SignUp = () => {
       </div>
       <Container>
         <div className="form-container">
-          {" "}
           <h1 className="mb-4">Sign Up</h1>
           {!loading && (
             <Form onSubmit={handleLoginSubmit}>
