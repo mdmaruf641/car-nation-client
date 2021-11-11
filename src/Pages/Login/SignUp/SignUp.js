@@ -85,7 +85,7 @@ const SignUp = () => {
           {loading && <Spinner animation="border" />}
           {user?.email && (
             <Alert className="mt-3" variant={"success"}>
-              Your Are Successfully Signed Up!
+              You Are Successfully Signed Up!
             </Alert>
           )}
           {authError && (

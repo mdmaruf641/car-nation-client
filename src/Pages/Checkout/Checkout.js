@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Checkout.css";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Alert, Button, Container, Form, Row } from "react-bootstrap";
 import Navigation from "../Shared/Navigation/Navigation";
 import useAuth from "./../../Hooks/useAuth";
 
 const Checkout = () => {
   const { _id } = useParams();
   const [checkout, setCheckout] = useState({});
+  const [orderSuccess, setOrderSuccess] = useState(false);
   const { user } = useAuth();
+  // check out box state initialize
+  const initialInfo = {
+    UserName: user.displayName,
+    email: user.email,
+    phone: "",
+    address: "",
+    price: "",
+  };
+  const [orderInfo, setOrderInfo] = useState(initialInfo);
 
   useEffect(() => {
     fetch("https://peaceful-ocean-27772.herokuapp.com/products")
@@ -19,13 +29,38 @@ const Checkout = () => {
       });
   }, [_id]);
 
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newInfo = { ...orderInfo };
+    newInfo[field] = value;
+    setOrderInfo(newInfo);
+  };
+
   // handle check out
   const handleCheckOut = (e) => {
     e.preventDefault();
 
     // data collect
+    const order = {
+      ...orderInfo,
+      productName: checkout?.name,
+    };
+    console.log(order);
     // send to the server
-    alert("check out done");
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          setOrderSuccess(true);
+        }
+      });
   };
 
   return (
@@ -34,6 +69,13 @@ const Checkout = () => {
         <Navigation></Navigation>
       </div>
       <Container>
+        <h3 className="dtls-hdr my-2">Place Your Order</h3>
+        {/* order success message */}
+        {orderSuccess && (
+          <Alert className="mt-3 w-50 mx-auto" variant={"success"}>
+            Checkout Successfully Completed!
+          </Alert>
+        )}
         <Row>
           <div className="col-lg-6">
             <div className="service-dtls mt-4">
@@ -51,10 +93,11 @@ const Checkout = () => {
           </div>
           <div className="col-lg-6">
             <div className="form-container">
-              <h3 className="dtls-hdr my-2">Place Your Order</h3>
+              <h3 className="dtls-hdr mb-3">{checkout?.name}</h3>
               <Form onSubmit={handleCheckOut}>
                 <Form.Control
-                  name="name"
+                  name="UserName"
+                  onBlur={handleOnBlur}
                   required
                   type="text"
                   defaultValue={user.displayName}
@@ -63,6 +106,7 @@ const Checkout = () => {
                 <br />
                 <Form.Control
                   name="email"
+                  onBlur={handleOnBlur}
                   required
                   type="email"
                   defaultValue={user.email}
@@ -71,19 +115,23 @@ const Checkout = () => {
                 <br />
                 <Form.Control
                   name="address"
+                  onBlur={handleOnBlur}
                   required
                   type="text"
                   placeholder="Your Address"
                 />
                 <br />
                 <Form.Control
-                  name="country"
+                  name="price"
+                  onBlur={handleOnBlur}
                   type="text"
-                  placeholder="Your Country"
+                  defaultValue={checkout?.price}
+                  placeholder="Price"
                 />
                 <br />
                 <Form.Control
                   name="phone"
+                  onBlur={handleOnBlur}
                   required
                   type="number"
                   placeholder="Your Phone Number"
