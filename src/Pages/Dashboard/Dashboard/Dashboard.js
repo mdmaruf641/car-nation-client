@@ -5,17 +5,20 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
+import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Nav } from "react-bootstrap";
+import { HashLink } from "react-router-hash-link";
+import DashboardHome from "./../DashboardHome/DashboardHome";
+import AddProduct from "./../AddProduct/AddProduct";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import MyOrders from "../MyOrders/MyOrders";
-import { Grid } from "@mui/material";
+import Payment from "../Payment/Payment";
+import Reviews from "../Reviews/Reviews";
+import useAuth from "./../../../Hooks/useAuth";
 
 const drawerWidth = 200;
 
@@ -23,24 +26,85 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const { admin } = useAuth();
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  // for nested route
+  let { path, url } = useRouteMatch();
 
   const drawer = (
     <div style={{ backgroundColor: "#1F2F50", height: "100%" }}>
       <Toolbar />
 
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Nav.Link className="menu-items fs-5 text-white" as={HashLink} to="/home">
+        Home
+      </Nav.Link>
+      <Divider style={{ color: "#fff" }} />
+      <Nav.Link
+        className="menu-items mt-1 fs-5 text-white"
+        as={HashLink}
+        to={`${url}`}
+      >
+        Dashboard
+      </Nav.Link>
+      <Divider style={{ color: "#fff" }} />
+      {admin && (
+        <>
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/manageOrders`}
+          >
+            Manage All Orders
+          </Nav.Link>
+          <Divider style={{ color: "#fff" }} />
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            to={`${url}/makeAdmin`}
+            as={HashLink}
+          >
+            Make Admin
+          </Nav.Link>
+          <Divider style={{ color: "#fff" }} />
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/addProduct`}
+          >
+            Add Product
+          </Nav.Link>
+        </>
+      )}
+      <Divider style={{ color: "#fff" }} />
+      {!admin && (
+        <>
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/myOrders`}
+          >
+            My Orders
+          </Nav.Link>
+          <Divider style={{ color: "#fff" }} />
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/payment`}
+          >
+            Payment
+          </Nav.Link>
+          <Divider style={{ color: "#fff" }} />
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/review`}
+          >
+            Review
+          </Nav.Link>
+        </>
+      )}
     </div>
   );
 
@@ -128,9 +192,27 @@ function Dashboard(props) {
           }}
         >
           <Toolbar />
-          <Typography paragraph>
-            <MyOrders></MyOrders>
-          </Typography>
+          <Switch>
+            <Route exact path={path}>
+              <DashboardHome></DashboardHome>
+            </Route>
+            <Route path={`${path}/manageProduct`}></Route>
+            <Route path={`${path}/makeAdmin`}>
+              <MakeAdmin></MakeAdmin>
+            </Route>
+            <Route path={`${path}/addProduct`}>
+              <AddProduct></AddProduct>
+            </Route>
+            <Route path={`${path}/myOrders`}>
+              <MyOrders></MyOrders>
+            </Route>
+            <Route path={`${path}/payment`}>
+              <Payment></Payment>
+            </Route>
+            <Route path={`${path}/review`}>
+              <Reviews></Reviews>
+            </Route>
+          </Switch>
         </Box>
       </Box>
     </>
