@@ -19,14 +19,27 @@ import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Reviews from "../Reviews/Reviews";
 import useAuth from "./../../../Hooks/useAuth";
+import ManageOrders from "../ManageOrders/ManageOrders";
+import ManageProducts from "../ManageProducts/ManageProducts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import AdminRoute from "./../../Login/AdminRoute/AdminRoute";
+
+/*
+===================================================================
+========= Dashboard Interface Designed by Material UI =============
+===================================================================
+*/
 
 const drawerWidth = 200;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { admin, logout } = useAuth();
 
-  const { admin } = useAuth();
+  // log out button icon
+  const signOut = <FontAwesomeIcon icon={faSignOutAlt} />;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -58,6 +71,14 @@ function Dashboard(props) {
             to={`${url}/manageOrders`}
           >
             Manage All Orders
+          </Nav.Link>
+          <Divider style={{ color: "#fff" }} />
+          <Nav.Link
+            className="menu-items mt-1 fs-5 text-white"
+            as={HashLink}
+            to={`${url}/manageProducts`}
+          >
+            Manage All Products
           </Nav.Link>
           <Divider style={{ color: "#fff" }} />
           <Nav.Link
@@ -105,6 +126,15 @@ function Dashboard(props) {
           </Nav.Link>
         </>
       )}
+      <Divider style={{ color: "#fff" }} />
+      <Nav.Link
+        className="menu-items fs-5 text-white"
+        as={HashLink}
+        to="/"
+        onClick={logout}
+      >
+        Log Out {signOut}
+      </Nav.Link>
     </div>
   );
 
@@ -196,13 +226,18 @@ function Dashboard(props) {
             <Route exact path={path}>
               <DashboardHome></DashboardHome>
             </Route>
-            <Route path={`${path}/manageProduct`}></Route>
-            <Route path={`${path}/makeAdmin`}>
+            <AdminRoute path={`${path}/manageOrders`}>
+              <ManageOrders></ManageOrders>
+            </AdminRoute>
+            <AdminRoute path={`${path}/manageProducts`}>
+              <ManageProducts></ManageProducts>
+            </AdminRoute>
+            <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin></MakeAdmin>
-            </Route>
-            <Route path={`${path}/addProduct`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/addProduct`}>
               <AddProduct></AddProduct>
-            </Route>
+            </AdminRoute>
             <Route path={`${path}/myOrders`}>
               <MyOrders></MyOrders>
             </Route>
