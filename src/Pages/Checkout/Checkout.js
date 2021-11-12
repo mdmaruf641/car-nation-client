@@ -48,7 +48,7 @@ const Checkout = () => {
     };
     console.log(order);
     // send to the server
-    fetch("http://localhost:5000/orders", {
+    fetch("https://peaceful-ocean-27772.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

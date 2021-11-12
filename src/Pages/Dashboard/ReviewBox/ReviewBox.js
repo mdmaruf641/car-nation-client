@@ -2,19 +2,22 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import useAuth from "./../../../Hooks/useAuth";
 
 const ReviewBox = () => {
   const [reviewSuccess, setReviewSuccess] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const { user } = useAuth();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/reviews", data).then((res) => {
-      if (res.data.insertedId) {
-        setReviewSuccess(true);
-
-        reset();
-      }
-    });
+    axios
+      .post("https://peaceful-ocean-27772.herokuapp.com/reviews", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          setReviewSuccess(true);
+          reset();
+        }
+      });
   };
   return (
     <div>
@@ -28,6 +31,7 @@ const ReviewBox = () => {
         <input
           className="my-2 rounded px-3 py-2 fs-5 w-50"
           placeholder="Name"
+          defaultValue={user.displayName}
           {...register("name", { required: true, maxLength: 20 })}
         />
         <br />

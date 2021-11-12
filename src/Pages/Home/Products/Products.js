@@ -13,9 +13,12 @@ const Products = () => {
   return (
     <div>
       <Container>
-        <p>our Featured Cars</p>
-        <h2>latest released Cars</h2>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="section-heading my-5">
+          <p className="w-75 mx-auto text-uppercase">our Featured Cars</p>
+          <h2 className="fw-bold">latest released Cars</h2>
+        </div>
+
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {products.slice(0, 6).map((product) => (
             <Product key={product._id} product={product}></Product>
           ))}
