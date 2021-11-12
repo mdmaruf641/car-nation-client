@@ -17,7 +17,7 @@ import AddProduct from "./../AddProduct/AddProduct";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
-import Reviews from "../Reviews/Reviews";
+import ReviewBox from "../ReviewBox/ReviewBox";
 import useAuth from "./../../../Hooks/useAuth";
 import ManageOrders from "../ManageOrders/ManageOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
@@ -245,7 +245,7 @@ function Dashboard(props) {
               <Payment></Payment>
             </Route>
             <Route path={`${path}/review`}>
-              <Reviews></Reviews>
+              <ReviewBox></ReviewBox>
             </Route>
           </Switch>
         </Box>
