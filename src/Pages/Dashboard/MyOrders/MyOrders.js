@@ -19,7 +19,7 @@ const MyOrders = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [user.email]);
 
   // Delete Orders
   const handleDelete = (id) => {

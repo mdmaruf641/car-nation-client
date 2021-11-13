@@ -6,13 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Alert, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [notifyCancel, setNotifyCancel] = useState(false);
+
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://peaceful-ocean-27772.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
@@ -20,11 +20,6 @@ const ManageOrders = () => {
   return (
     <div>
       <Container>
-        {notifyCancel && (
-          <Alert className="mt-3 w-50 mx-auto" variant={"success"}>
-            Order successfully canceled!
-          </Alert>
-        )}
         <h2>Manage {orders.length} Orders</h2>
         <TableContainer
           sx={{ width: "90%", height: "100%", margin: "auto" }}

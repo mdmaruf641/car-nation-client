@@ -12,7 +12,7 @@ const ManageProducts = () => {
   const [orders, setOrders] = useState([]);
   const [notifyCancel, setNotifyCancel] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://peaceful-ocean-27772.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
