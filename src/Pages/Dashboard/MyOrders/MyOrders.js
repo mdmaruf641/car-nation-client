@@ -7,11 +7,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useAuth from "./../../../Hooks/useAuth";
-import { Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 
 const MyOrders = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
+  const [notifyCancel, setNotifyCancel] = useState(false);
 
   useEffect(() => {
     const url = `https://peaceful-ocean-27772.herokuapp.com/orders?email=${user.email}`;
@@ -22,15 +23,33 @@ const MyOrders = () => {
 
   // Delete Orders
   const handleDelete = (id) => {
-    const url = `https://peaceful-ocean-27772.herokuapp.com/orders/${"id"}`;
-    fetch(url, {
-      method: "DELETE",
-    }).then();
+    const proceed = window.confirm(
+      "Are You sure, you want to cancel this order?"
+    );
+    if (proceed) {
+      const url = `https://peaceful-ocean-27772.herokuapp.com/orders/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            setNotifyCancel(true);
+            const remainingOrders = orders.filter((order) => order._id !== id);
+            setOrders(remainingOrders);
+          }
+        });
+    }
   };
   return (
     <div>
       <Container>
         <h2 className="mb-2">My Total Orders: {orders.length}</h2>
+        {notifyCancel && (
+          <Alert className="mt-3 w-50 mx-auto" variant={"success"}>
+            Order successfully canceled!
+          </Alert>
+        )}
         <TableContainer
           sx={{ width: "90%", height: "100%", margin: "auto" }}
           component={Paper}
@@ -66,7 +85,7 @@ const MyOrders = () => {
                   sx={{ fontSize: "20px", color: "#ff5400 " }}
                   align="center"
                 >
-                  Action
+                  Cancel
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -83,10 +102,10 @@ const MyOrders = () => {
                   </TableCell>
                   <TableCell align="center">{row.email}</TableCell>
                   <TableCell align="center">{row.productName}</TableCell>
-                  <TableCell align="center">{row.price}</TableCell>
+                  <TableCell align="center">${row.price}</TableCell>
                   <TableCell align="center">
                     <button
-                      onClick={() => handleDelete(orders._id)}
+                      onClick={() => handleDelete(row._id)}
                       className="button"
                     >
                       Delete
