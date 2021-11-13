@@ -1,10 +1,10 @@
-.contact-info {
+.contact-part {
   text-align: start;
 }
-.contact-info p {
+.contact-part p {
   color: #ff5400;
 }
-.contact-info h1 {
+.contact-part h1 {
   color: #323232;
   font-size: 30px;
   font-weight: 800;

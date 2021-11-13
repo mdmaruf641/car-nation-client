@@ -24,7 +24,7 @@ const Contact = () => {
           <h2>Contact Us</h2>
         </div>
         <Row className="mt-4">
-          <div className="col-lg-6  contact-info">
+          <div className="col-lg-6  contact-part">
             <p>contact information</p>
             <h1>Our Address Support</h1>
             <p className="text-dark my-4 w-75">
