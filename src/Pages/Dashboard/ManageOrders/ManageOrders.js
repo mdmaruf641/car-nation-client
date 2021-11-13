@@ -12,7 +12,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://peaceful-ocean-27772.herokuapp.com/orders")
+    fetch("https://peaceful-ocean-27772.herokuapp.com/orders/admin")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
