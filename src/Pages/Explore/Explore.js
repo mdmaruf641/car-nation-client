@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import Footer from "../Shared/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import ExploreProduct from "./../ExploreProduct/ExploreProduct";
 import "./Explore.css";
@@ -27,6 +28,7 @@ const Explore = () => {
           ))}
         </div>
       </Container>
+      <Footer></Footer>
     </>
   );
 };

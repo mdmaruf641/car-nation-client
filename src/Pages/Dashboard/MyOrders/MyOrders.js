@@ -85,6 +85,12 @@ const MyOrders = () => {
                   sx={{ fontSize: "20px", color: "#ff5400 " }}
                   align="center"
                 >
+                  Status
+                </TableCell>
+                <TableCell
+                  sx={{ fontSize: "20px", color: "#ff5400 " }}
+                  align="center"
+                >
                   Cancel
                 </TableCell>
               </TableRow>
@@ -103,6 +109,7 @@ const MyOrders = () => {
                   <TableCell align="center">{row.email}</TableCell>
                   <TableCell align="center">{row.productName}</TableCell>
                   <TableCell align="center">${row.price}</TableCell>
+                  <TableCell align="center">Pending</TableCell>
                   <TableCell align="center">
                     <button
                       onClick={() => handleDelete(row._id)}

@@ -1,3 +1,6 @@
+.contact-info {
+  text-align: start;
+}
 .contact-info p {
   color: #ff5400;
 }
@@ -5,4 +8,24 @@
   color: #323232;
   font-size: 30px;
   font-weight: 800;
+}
+
+.single-info .info-i {
+  color: #ff5400;
+}
+.single-info p {
+  color: #9c9c9c;
+}
+.contact-box {
+  margin-top: 35px;
+  text-align: start;
+}
+.contact-box h1 {
+  color: #323232;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.contact-box h1 span {
+  color: #ff5400;
 }
