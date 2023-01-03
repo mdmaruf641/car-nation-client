@@ -21,7 +21,7 @@ const Checkout = () => {
   const [orderInfo, setOrderInfo] = useState(initialInfo);
 
   useEffect(() => {
-    fetch("https://peaceful-ocean-27772.herokuapp.com/products")
+    fetch("https://car-nation-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         const checkoutItems = data.find((checkout) => checkout._id === _id);
@@ -48,7 +48,7 @@ const Checkout = () => {
     };
     console.log(order);
     // send to the server
-    fetch("https://peaceful-ocean-27772.herokuapp.com/orders", {
+    fetch("https://car-nation-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

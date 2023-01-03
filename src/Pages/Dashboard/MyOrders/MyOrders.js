@@ -15,7 +15,7 @@ const MyOrders = () => {
   const [notifyCancel, setNotifyCancel] = useState(false);
 
   useEffect(() => {
-    const url = `https://peaceful-ocean-27772.herokuapp.com/orders?email=${user.email}`;
+    const url = `https://car-nation-server.vercel.app/orders?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
@@ -27,7 +27,7 @@ const MyOrders = () => {
       "Are You sure, you want to cancel this order?"
     );
     if (proceed) {
-      const url = `https://peaceful-ocean-27772.herokuapp.com/orders/${id}`;
+      const url = `https://car-nation-server.vercel.app/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

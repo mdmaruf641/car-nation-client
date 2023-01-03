@@ -9,7 +9,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://peaceful-ocean-27772.herokuapp.com/users", {
+    fetch("https://car-nation-server.vercel.app/users", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -10,7 +10,7 @@ const AddProduct = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post("https://peaceful-ocean-27772.herokuapp.com/products", data)
+      .post("https://car-nation-server.vercel.app/products", data)
       .then((res) => {
         if (res.data.insertedId) {
           setAddedSuccess(true);
