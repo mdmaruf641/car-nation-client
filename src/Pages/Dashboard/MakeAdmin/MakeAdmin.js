@@ -9,7 +9,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://car-nation-server.vercel.app/users", {
+    fetch("https://car-nation-server-site.vercel.app/users", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

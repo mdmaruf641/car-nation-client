@@ -12,7 +12,7 @@ const ManageProducts = () => {
   const [orders, setOrders] = useState([]);
   const [notifyCancel, setNotifyCancel] = useState(false);
   useEffect(() => {
-    fetch("https://car-nation-server.vercel.app/orders/admin")
+    fetch("https://car-nation-server-site.vercel.app/orders/admin")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
@@ -22,7 +22,7 @@ const ManageProducts = () => {
       "Are You sure, you want to cancel this order?"
     );
     if (proceed) {
-      const url = `https://car-nation-server.vercel.app/orders/${id}`;
+      const url = `https://car-nation-server-site.vercel.app/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

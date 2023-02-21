@@ -12,7 +12,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://car-nation-server.vercel.app/orders/admin")
+    fetch("https://car-nation-server-site.vercel.app/orders/admin")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);

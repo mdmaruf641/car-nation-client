@@ -6,7 +6,7 @@ import "./Reviews.css";
 const Reviews = () => {
   const [reviews, SetReviews] = useState([]);
   useEffect(() => {
-    fetch("https://car-nation-server.vercel.app/reviews")
+    fetch("https://car-nation-server-site.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => SetReviews(data));
   }, []);

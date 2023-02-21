@@ -11,7 +11,7 @@ const ReviewBox = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post("https://car-nation-server.vercel.app/reviews", data)
+      .post("https://car-nation-server-site.vercel.app/reviews", data)
       .then((res) => {
         if (res.data.insertedId) {
           setReviewSuccess(true);

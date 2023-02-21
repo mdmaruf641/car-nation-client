@@ -8,7 +8,7 @@ import "./Explore.css";
 const Explore = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://car-nation-server.vercel.app/products")
+    fetch("https://car-nation-server-site.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
